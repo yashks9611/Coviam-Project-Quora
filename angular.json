@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "QANgin": {
+    "qangin": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/QANgin",
+            "outputPath": "dist/qangin",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,7 +28,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "src/assets/sass/paper-kit.scss",
+              "src/assets/css/demo.css",
+              "src/assets/css/nucleo-icons.css"
             ],
             "scripts": []
           },
@@ -66,18 +71,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "QANgin:build"
+            "browserTarget": "qangin:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "QANgin:build:production"
+              "browserTarget": "qangin:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "QANgin:build"
+            "browserTarget": "qangin:build"
           }
         },
         "test": {
@@ -114,15 +119,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "QANgin:serve"
+            "devServerTarget": "qangin:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "QANgin:serve:production"
+              "devServerTarget": "qangin:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "QANgin"
+  "defaultProject": "qangin"
 }

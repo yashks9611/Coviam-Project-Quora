@@ -1,0 +1,40 @@
+<!-- <div class="modal-header">
+    <h4 class="modal-title">Hi there!</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <p>Hello, {{name}}!</p>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="activeModal.close('Close click')">Close</button>
+</div> -->
+
+
+<div class="modal-header">
+    <h5 class="modal-title text-center">Ask a Question...</h5>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body"> 
+    <div class="col">
+        <label>Post your question</label>
+        <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+            <div class="input-group-prepend">
+            <span class="input-group-text"><i class="nc-icon nc-chat-33"></i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="Type your question" (focus)="focus=true" (blur)="focus=false" >
+        </div>
+    </div>
+</div>
+<div class="justify-content-around modal-footer">
+    <div class="float-left justify-content-center">
+        <button type="button" class="btn btn-danger btn-link text-center w-100" (click)="activeModal.close('Close click')">Post It</button>
+    </div>
+    <!-- <div class="divider p-0 m-0 justify-content-center"></div> -->
+    <div class="float-right justify-content-center">
+        <button type="button" class="btn btn-default btn-link text-center w-100" (click)="activeModal.close('Close click')">Cancel</button>
+    </div>
+</div>

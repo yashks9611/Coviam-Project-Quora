@@ -1,0 +1,82 @@
+<nav [ngClass]="{
+    'navbar':true,
+    'navbar-expand-lg':true,
+    'fixed-top':true,
+    'nav-down bg-dark':isFeedOrQuestion(),
+    'navbar-transparent':(!isFeedOrQuestion())
+}" color-on-scroll="500">
+    <div class="container">
+        <div class="navbar-translate">
+            <a class="navbar-brand" [routerLink]="['/homepage']">
+                <img src="assets/img/logo_symbol.png" alt="" style="max-width: 30px;"> QA-Ngin
+            </a>
+            <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav ml-auto">
+                <!-- <li class="nav-item" *ngIf="!isDocumentation()">
+                    <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
+                        <i class="fa fa-twitter"></i>
+                        <p class="d-lg-none">Twitter</p>
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="!isDocumentation()">
+                    <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
+                        <i class="fa fa-facebook-square"></i>
+                        <p class="d-lg-none">Facebook</p>
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="!isDocumentation()">
+                    <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
+                        <i class="fa fa-instagram"></i>
+                        <p class="d-lg-none">Instagram</p>
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="!isDocumentation()">
+                    <a class="nav-link" rel="tooltip" title="Star on GitHub" data-placement="bottom" href="https://www.github.com/CreativeTimOfficial/paper-kit-2-angular" target="_blank">
+                        <i class="fa fa-github"></i>
+                        <p class="d-lg-none">GitHub</p>
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="!isDocumentation()">
+                    <a href="http://pk2-angular.creative-tim.com/documentation/tutorial" class="nav-link" target="_blank"><i class="nc-icon nc-book-bookmark"></i> Documentation</a>
+                </li>
+                <li class="nav-item" *ngIf="isHome()">
+                    <a href="https://www.creative-tim.com/product/paper-kit-2-pro-angular?ref=pk2-angular-free-local" target="_blank" class="btn btn-danger btn-round">Upgrade to Pro</a>
+                </li>
+                <li class="nav-item" *ngIf="!isHome()">
+                    <a [routerLink]="['/home']" *ngIf="!isDocumentation()" class="nav-link"><i class="nc-icon nc-layout-11"></i>Components</a>
+                    <a [routerLink]="['/home']" *ngIf="isDocumentation()" class="nav-link">Back to Kit</a>
+                </li> -->
+                <!-- <li class="nav-item" *ngIf="isDocumentation()">
+                    <a [routerLink]="['/#/landing']" target="_blank" class="nav-link">Have an issue</a>
+                </li> -->
+                <li class="nav-item" *ngIf="!isHomepage() && !isSignIn() && !isSignUp()">
+                    <a href="" class="nav-link"><i class="nc-icon nc-bell-55"></i>Notifications</a>
+                </li>
+                <li class="nav-item" *ngIf="!isHomepage() && !isSignIn() && !isSignUp()">
+                    <a href="" class="nav-link"><i class="nc-icon nc-zoom-split"></i>Search</a>
+                </li>
+                <li class="nav-item" *ngIf="!isHomepage() && !isSignIn() && !isSignUp()">
+                    <a class="nav-link" (click) = "open()"><i class="nc-icon nc-paper"></i> Ask a Question</a>
+                </li>
+                <li class="nav-item" *ngIf="!isHomepage() && !isSignIn() && !isSignUp()">
+                    <a class="nav-link"><i class="nc-icon nc-single-02"></i>Profile</a>
+                </li>
+                <li class="nav-item" *ngIf="(isHomepage() || isSignIn()) && !isSignUp()">
+                    <a href="" [routerLink]="['/signup']"  class="nav-link"><i class="nc-icon nc-tap-01"></i>Register</a>
+                </li>
+                <li class="nav-item" *ngIf="(isHomepage() || isSignUp()) && !isSignIn()">
+                    <a  [routerLink]="['/signin']"  class="nav-link"><i class="nc-icon nc-key-25"></i>Login</a>
+                </li>
+                <li class="nav-item" *ngIf="isHomepage() || isSignIn() || isSignUp()">
+                    <a href=""  class="nav-link"><i class="nc-icon nc-book-bookmark"></i>Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
