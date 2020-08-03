@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
         this.renderer.listen('window', 'scroll', (event) => {
             var titlee = this.location.prepareExternalUrl(this.location.path());
             titlee = titlee.slice( 1 );
-            console.log(titlee);
+            // console.log(titlee);
             const number = window.scrollY;
             if(titlee === '/feed' || titlee === '/question' || titlee === '/search' || titlee === '/notifs'){
                 navbar.classList.remove('navbar-transparent');
@@ -61,7 +61,7 @@ export class AppComponent implements OnInit {
     removeFooter() {
         var titlee = this.location.prepareExternalUrl(this.location.path());
         titlee = titlee.slice( 1 );
-        if(titlee === 'signup' || titlee === 'nucleoicons' || titlee === 'homepage'){
+        if(titlee === '/signup' || titlee === '/nucleoicons' || titlee === '/homepage' || titlee === '/signin'){
             return false;
         }
         else {

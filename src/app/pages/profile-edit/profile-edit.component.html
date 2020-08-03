@@ -1,9 +1,17 @@
 <div class="wrapper">
-    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/fabio-mangione.jpg');">
+    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/fabio-mangione.jpg');" *ngIf = "backgroundImage == null">
         <div class="filter"></div>
         <div class="container m-4 d-flex align-self-end justify-content-center">
             <div class="motto text-center">
-                <button type="button" class="btn btn-outline-neutral btn-round "><i class="nc-icon nc-scissors"></i>&nbsp; Edit</button>
+                <button type="button" class="btn btn-outline-neutral btn-round " (click) = "openUploadBackgroundImageModal()"><i class="nc-icon nc-scissors"></i>&nbsp; Edit</button>
+            </div>
+        </div>
+    </div>
+    <div class="page-header page-header-xs" data-parallax="true" [src]="backgroundImage" *ngIf = "backgroundImage != null">
+        <div class="filter"></div>
+        <div class="container m-4 d-flex align-self-end justify-content-center">
+            <div class="motto text-center">
+                <button type="button" class="btn btn-outline-neutral btn-round " (click) = "openUploadBackgroundImageModal()"><i class="nc-icon nc-scissors"></i>&nbsp; Edit</button>
             </div>
         </div>
     </div>
@@ -12,12 +20,15 @@
             <div class="col-3">
                 <div class="container">
                     <div class="owner">
-                        <div class="avatar-edit">
+                        <div class="avatar-edit" *ngIf="image==null">
                             <img src="./assets/img/faces/joe-gardner-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                        </div>
+                        <div class="avatar-edit" *ngIf="image!=null">
+                            <img [src]="image" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                         </div>
                         <div class="row">
                             <div class="mr-auto ml-auto">
-                                <button class="btn btn-outline-danger btn-lg btn-round"><i class="nc-icon nc-scissors"></i>  Edit</button>
+                                <button class="btn btn-outline-danger btn-lg btn-round" (click) = "openUploadImageModal()"><i class="nc-icon nc-scissors"></i>  Edit</button>
                             </div>
                         </div>
                     </div>
@@ -28,6 +39,25 @@
                     <div class="col-9 mx-auto">
                         <form class="edit-form">
                             <h2 class="text-center">Edit Profile</h2>
+                            
+                            <!-- Profile Type -->
+                            <div class="row mt-5">
+                                <div class="col-md-3 col-sm-3"></div>
+                                <div class="col-md-5 col-sm-5 mr-auto">
+                                    <label for="" class="font-weight-bold">Public</label>
+                                </div>
+                                <div class="col-md-1 col-sm-1">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" value="" checked="" name = "profileType" [(ngModel)]="profileType">
+                                        <span class="form-check-sign"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3"></div>
+                            </div>
+
+                            <!-- UserName -->
                             <div class="row">
                                 <div class="col">
                                     <label>Username</label>
@@ -35,30 +65,40 @@
                                         <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="nc-icon nc-circle-10"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Username" (focus)="focus=true" (blur)="focus=false" >
+                                        <input type="text" class="form-control" placeholder="Username" (focus)="focus=true" (blur)="focus=false" name="username" [(ngModel)] = "username">
                                     </div>
+                                    <!-- <div *ngIf = "invalidUsername==true">
+                                        <p class="text-danger">
+                                            invalid username
+                                        </p>
+                                    </div> -->
                                 </div>
                             </div>
+
+                            <!-- Name -->
                             <div class="row">
+                                <!-- First Name -->
                                 <div class="col-md-6">
                                     <label>First Name</label>
                                     <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
                                         <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="nc-icon nc-single-02"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="First Name" (focus)="focus=true" (blur)="focus=false" >
+                                        <input type="text" class="form-control" placeholder="First Name" (focus)="focus=true" (blur)="focus=false" name="firstname" [(ngModel)] = "firstname">
                                     </div>
                                 </div>
+                                <!-- Last Name -->
                                 <div class="col-md-6">
                                     <label>Last Name</label>
                                     <div class="input-group" [ngClass]="{'input-group-focus':focus1===true}">
                                         <div class="input-group-prepend">
                                         <span class="input-group-text">  <i class="nc-icon nc-single-02"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Last Name" (focus)="focus1=true" (blur)="focus1=false" >
+                                        <input type="text" class="form-control" placeholder="Last Name" (focus)="focus1=true" (blur)="focus1=false" name="lastname" [(ngModel)] = "lastname">
                                     </div>
                                 </div>
                             </div>
+                            <!-- Email -->
                             <div class="row">
                                 <div class="col">
                                     <label>Email</label>
@@ -66,18 +106,23 @@
                                         <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="nc-icon nc-email-85"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Email" (focus)="focus=true" (blur)="focus=false" >
+                                        <input type="text" class="form-control" placeholder="Email" (focus)="focus=true" (blur)="focus=false" name="email" [(ngModel)] = "email">
                                     </div>
                                 </div>
                             </div>
-                                
+                            
+                            <!-- Bio -->
                             <label>Bio</label>
-                            <textarea class="form-control" rows="4" placeholder="Tell us about yourself"></textarea>
+                            <textarea class="form-control" rows="4" placeholder="Tell us about yourself" name="bio" [(ngModel)] = "bio"></textarea>
+
+                            <!-- Save Button -->
                             <div class="row">
                                 <div class="mr-auto ml-auto">
-                                    <button class="btn btn-danger btn-lg btn-fill">Save Changes</button>
+                                    <button class="btn btn-danger btn-lg btn-fill" (click)="onSaveChanges()">Save</button>
                                 </div>
                             </div>
+
+                            
                         </form>
                     </div>
                 </div>

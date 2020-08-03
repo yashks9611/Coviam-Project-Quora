@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserServiceService } from 'src/app/services/userDetailsService/user-service.service';
 
 @Component({
     selector: 'app-signin',
@@ -7,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SigninComponent implements OnInit {
     test : Date = new Date();
-    focus;
-    focus1;
-    constructor() { }
+    focus : boolean;
+    focus1 : boolean;
 
-    ngOnInit() {}
+    result : any;
+    username : any;
+    password : any;
+    constructor(private userService : UserServiceService, private router:Router) { 
+        // this.userService = userServiceInitial;
+    }
+
+    ngOnInit():void {}
+
+    onSignIn(){
+        // console.log(this.username + this.password);
+        if(this.username && this.password){
+            this.userService.authenticate(this.username,this.password).subscribe(
+                data=>
+                {
+                    this.userService.isLoggedIn(true);
+                    this.router.navigateByUrl("/feed");
+                }
+            );
+        }
+        else{
+            alert("fields can not be null"); 
+        }
+    }
 }

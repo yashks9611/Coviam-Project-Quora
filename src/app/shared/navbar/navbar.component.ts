@@ -86,7 +86,67 @@ export class NavbarComponent implements OnInit {
             return false;
         }
     }
-    isFeedOrQuestion() {
+    isNotifs() {
+      var titlee = this.location.prepareExternalUrl(this.location.path());
+      if(titlee.charAt(0) === '#'){
+          titlee = titlee.slice( 1 );
+      }
+        if( titlee === '/notifs' ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    isProfile() {
+      var titlee = this.location.prepareExternalUrl(this.location.path());
+      if(titlee.charAt(0) === '#'){
+          titlee = titlee.slice( 1 );
+      }
+        if( titlee === '/profile' ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    isSearch() {
+      var titlee = this.location.prepareExternalUrl(this.location.path());
+      if(titlee.charAt(0) === '#'){
+          titlee = titlee.slice( 1 );
+      }
+        if( titlee === '/search' ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    isContact() {
+      var titlee = this.location.prepareExternalUrl(this.location.path());
+      if(titlee.charAt(0) === '#'){
+          titlee = titlee.slice( 1 );
+      }
+        if( titlee === '/contact' ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    isFeed() {
+      var titlee = this.location.prepareExternalUrl(this.location.path());
+      if(titlee.charAt(0) === '#'){
+          titlee = titlee.slice( 1 );
+      }
+        if( titlee === '/feed' ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    isFeedOrQuestionOrNotifsOrSearch() {
       var titlee = this.location.prepareExternalUrl(this.location.path());
       if(titlee.charAt(0) === '#'){
           titlee = titlee.slice( 1 );

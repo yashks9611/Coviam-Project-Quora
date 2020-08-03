@@ -28,12 +28,24 @@ export class FooterComponent implements OnInit {
             return false;
         }
     }
-    isLogin() {
+    isSignup() {
       var titlee = this.location.prepareExternalUrl(this.location.path());
       if(titlee.charAt(0) === '#'){
           titlee = titlee.slice( 1 );
       }
         if( titlee === '/signup' ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    isSignin() {
+      var titlee = this.location.prepareExternalUrl(this.location.path());
+      if(titlee.charAt(0) === '#'){
+          titlee = titlee.slice( 1 );
+      }
+        if( titlee === '/signin' ) {
             return true;
         }
         else {
